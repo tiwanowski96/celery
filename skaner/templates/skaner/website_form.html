@@ -1,0 +1,13 @@
+{% extends 'skaner/base.html' %}
+
+{% block content %}
+  <h2>Website Form</h2>
+
+  <form action="" method="POST">{% csrf_token %}
+        <h3>URL:</h3>
+        {{ form.url }}&nbsp;
+        <h3>Category:</h3>
+        {{ form.category }}
+        <input type="submit" value="&nbsp;CONFIRM&nbsp;">
+  </form>
+{% endblock %}

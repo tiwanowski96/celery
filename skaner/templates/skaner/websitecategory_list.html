@@ -1,0 +1,22 @@
+{% extends 'skaner/base.html' %}
+
+{% block content %}
+  <h2>Website Category List:</h2>
+
+  <ol>
+    {% for category in object_list %}
+      <li>
+        <b>Name: {{ category.name }} </b><br>
+          Description: {{ category.description }} <br>
+          Count: {{ category.count }}
+      </li>
+    <br>
+    {% empty %}
+      <li>No categories.</li>
+    {% endfor %}
+  </ol>
+  <br>
+  <form action="" method="post">{% csrf_token %}
+      <input type="submit" value="&nbsp;UPDATE COUNT&nbsp;">
+  </form>
+{% endblock %}

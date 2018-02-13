@@ -1,0 +1,30 @@
+{% extends 'skaner/base.html' %}
+
+{% block content %}
+    <h2>Website Details</h2>
+
+    <ul>
+        <li><b>Title: {{ website.title }}</b></li>
+        <li>URL: {{ website.url }}</li>
+        <li>Alexa Rank: {{ website.alexa_rank }}</li>
+        <li>Category: {{ website.category }}</li>
+        <li>Date Added: {{ website.date_added }}</li>
+        <li>Date Updated: {{ website.date_updated }}</li>
+    </ul>
+
+
+    <ol>
+    {% for page in website_page_list %}
+      <li> {{ page.title }} | {{ page.url }}</li>
+    {% empty %}
+      <li>No website's pages.</li>
+    {% endfor %}
+  </ol>
+
+
+    <br>
+    <form action="" method="post">{% csrf_token %}
+    <input type="submit" value="&nbsp;SCAN WEBSITE&nbsp;">
+    </form>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'skaner/base.html' %}
+
+{% block content %}
+  <h2>Website List</h2>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th> NR </th>
+        <th> TITLE </th>
+        <th class="category"> CATEGORY </th>
+        <th> ALEXA RANK </th>
+      </tr>
+    </thead>
+    {% for website in website_list %}
+    <tbody>
+      <tr>
+        <td>{{ website.id }}</td>
+        <td><a href="{% url 'website' id=website.id %}"> {{ website.title }}</a></td>
+        <td>{{ website.category }}</td>
+        <td>{{ website.alexa_rank }}</td>
+      </tr>
+    </tbody>
+
+    {% empty %}
+      No websites.
+    {% endfor %}
+  </table>
+</div>
+
+<div class="hidden">
+  <table>
+    <thead>
+      <tr>
+        <th> NR </th>
+        <th> TITLE </th>
+        <th class="category"> CATEGORY </th>
+        <th> ALEXA RANK </th>
+      </tr>
+    </thead>
+    {% for website in website_list2 %}
+    <tbody>
+      <tr>
+        <td>{{ website.id }}</td>
+        <td><a href="{% url 'website' id=website.id %}"> {{ website.title }}</a></td>
+        <td>{{ website.category }}</td>
+        <td>{{ website.alexa_rank }}</td>
+      </tr>
+    </tbody>
+
+    {% empty %}
+      No websites.
+    {% endfor %}
+  </table>
+</div>
+
+  <form action="" method="POST">{% csrf_token %}
+        <h3>Category:</h3>
+        <select name="dropdown">
+          {% for category in category_list %}
+          <option value="{{ category.id }}">{{ category.name }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="&nbsp;CONFIRM&nbsp;">
+  </form>
+<script type="text/javascript" src="/static/js/table.js"></script>
+{% endblock %}
